@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,900');
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+
+// https://www.colourlovers.com/palette/629637/()
+
+$primary-color: #343838;
+
+.fire-upload{
+    padding: 40px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    font-family: 'Lato', sans-serif;
+
+    .title {
+        margin-bottom: 40px;
+        h1{
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-align: center;
+            color: $primary-color;
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    .btn{
+        text-align: center;
+        margin-top:40px;
+        button{
+            border-radius: 5px;
+            border:none;
+            outline: none;
+            font-size: 0.8rem;
+            font-weight: 900;
+            padding:10px 20px;
+            background: $primary-color;
+            color: #ffffff;
+            cursor: pointer;
+        }
+    }
+
+    .files{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li{
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            grid-gap:10px;
+            margin-bottom: 20px;
+
+            .icon{
+                font-size: 1.4rem;
+            }
+
+            .control{
+                border:none;
+                outline: none;
+                background: transparent;
+                cursor: pointer;
+                color: #cccccc;
+            }
+
+            .progress{
+                .meta-info{
+                    display: flex;
+                    font-size: 0.8rem;
+                    margin-bottom: 5px;
+                    span:first-child{
+                        flex:1 1 auto;
+                    }
+                    span:last-child{
+                        font-size: 0.6rem;
+                    }
+                }
+                .bar{
+                    width: 100%;
+                    height: 10px;
+                    border-radius:2px;
+                }
+                .size{
+                    margin-top:5px;
+                    font-size: 0.6rem;
+                }
+            }
+        }
+
+        li:last-child{
+            margin-bottom:0px;
+        }
+    }
+
+}
