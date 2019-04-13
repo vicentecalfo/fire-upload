@@ -1,4 +1,4 @@
-<div class="uploader">
+<div class="uploader" *ngIf="snapshot | async as snap">
   <div class="icon"
        [style.color]="'#'+ color">
     <i class="{{ icon }}"></i>
@@ -21,14 +21,12 @@
       <div *ngIf="percentage | async as pct"
            [style.background]="'linear-gradient(90deg, #'+ color +' '+ pct +'%, #ededed '+ pct +'%)'"></div>
     </div>
-    <div class="size"
-         *ngIf="snapshot | async as snap">
+    <div class="size">
       {{ snap.bytesTransferred | filesize }} of {{ file.size | filesize }}
     </div>
 
   </div>
-  <div class="controls"
-       *ngIf="!cancelled && snapshot | async as snap">
+  <div class="controls">
     <button type="button"
             class="control"
             (click)="task.resume()"

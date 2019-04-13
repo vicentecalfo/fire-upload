@@ -52,8 +52,7 @@ export class UploaderComponent implements OnInit {
       finalize(
         async () => {
           const url = await ref.getDownloadURL().toPromise();
-          await this.storage.storage.refFromURL(url).delete();
-          console.log(`Arquivo removido. Este upload é apenas para demonstração.`);
+          console.log(`URL: ${url}`);
         }
       )
     );
