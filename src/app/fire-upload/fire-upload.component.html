@@ -3,117 +3,22 @@
     <h1>Upload Files</h1>
   </div>
   <ul class="files">
-    <li>
-      <div
-        class="icon"
-        style="color:#FE4365;"
-      >
-      <i class="far fa-file-image"></i>
-      </div>
-      <div class="progress">
-        <div class="meta-info">
-          <span>sample_1.png</span> <span>37%</span>
-        </div>
-        <div
-          class="bar"
-          [style.background]="'linear-gradient(90deg, #FE4365 37%, #ededed 37%)'"
-        >
-        </div>
-        <div class="size">
-          6MB
-        </div>
-
-      </div>
-      <div class="controls">
-        <button
-          type="button"
-          class="control"
-        >
-          <i class="fas fa-pause"></i>
-        </button>
-        <button
-          type="button"
-          class="control"
-        >
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
+    <li *ngIf="files.length === 0"
+        class="empty">
+      <i class="far fa-file"></i>
     </li>
-    <li>
-      <div
-        class="icon"
-        style="color:#83AF9B;"
-      >
-        <i class="far fa-file-pdf"></i>
-      </div>
-      <div class="progress">
-        <div class="meta-info">
-          <span>sample_2.pdf</span> <span>57%</span>
-        </div>
-        <div
-          class="bar"
-          [style.background]="'linear-gradient(90deg, #83AF9B 57%, #ededed 57%)'"
-        >
-        </div>
-        <div class="size">
-          12MB
-        </div>
-
-      </div>
-      <div class="controls">
-        <button
-          type="button"
-          class="control"
-        >
-          <i class="fas fa-pause"></i>
-        </button>
-        <button
-          type="button"
-          class="control"
-        >
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-    </li>
-
-    <li>
-      <div
-        class="icon"
-        style="color:#FC913A;"
-      >
-      <i class="far fa-file-video"></i>
-      </div>
-      <div class="progress">
-        <div class="meta-info">
-          <span>sample_3.mp4</span> <span>87%</span>
-        </div>
-        <div
-          class="bar"
-          [style.background]="'linear-gradient(90deg, #FC913A 87%, #ededed 87%)'"
-        >
-        </div>
-        <div class="size">
-          25MB
-        </div>
-
-      </div>
-      <div class="controls">
-        <button
-          type="button"
-          class="control"
-        >
-          <i class="fas fa-pause"></i>
-        </button>
-        <button
-          type="button"
-          class="control"
-        >
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
+    <li *ngFor="let file of files">
+      <ez-fu-uploader [file]="file"
+                      storagePath="test/"></ez-fu-uploader>
     </li>
   </ul>
   <div class="btn">
-    <button type="button">Choose File</button>
+    <input type="file"
+           #fileInput
+           class="file-input"
+           (change)="handlerFileInput($event)"
+           multiple />
+    <button type="button"
+            (click)="fileInput.click()">Choose File</button>
   </div>
 </div>

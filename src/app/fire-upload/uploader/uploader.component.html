@@ -1,0 +1,55 @@
+<div class="uploader">
+  <div class="icon"
+       [style.color]="'#'+ color">
+    <i class="{{ icon }}"></i>
+  </div>
+  <div class="cancelled"
+       *ngIf="cancelled">
+    <span>{{ file.name | truncate:[20, '...'] }}</span>
+    <div class="feed"
+         [style.color]="'#'+ color">
+      Cancelled
+    </div>
+  </div>
+  <div class="progress"
+       *ngIf="!cancelled">
+    <div class="meta-info">
+      <span>{{ file.name | truncate:[20, '...'] }}</span> <span
+            *ngIf="percentage | async as pct">{{ pct | number }}%</span>
+    </div>
+    <div class="bar">
+      <div *ngIf="percentage | async as pct"
+           [style.background]="'linear-gradient(90deg, #'+ color +' '+ pct +'%, #ededed '+ pct +'%)'"></div>
+    </div>
+    <div class="size"
+         *ngIf="snapshot | async as snap">
+      {{ snap.bytesTransferred | filesize }} of {{ file.size | filesize }}
+    </div>
+
+  </div>
+  <div class="controls"
+       *ngIf="!cancelled && snapshot | async as snap">
+    <button type="button"
+            class="control"
+            (click)="task.resume()"
+            *ngIf="!(snap?.state !== 'paused')"
+            [style.color]="'#'+ color">
+      <i class="fas fa-play"></i>
+    </button>
+    <button type="button"
+            class="control"
+            (click)="task.pause()"
+            [disabled]="!isActive(snap)"
+            *ngIf="!(snap?.state === 'paused')"
+            [style.color]="'#'+ color">
+      <i class="fas fa-pause"></i>
+    </button>
+    <button type="button"
+            class="control"
+            (click)="cancel()"
+            [disabled]="!isActive(snap)"
+            [style.color]="'#'+ color">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+</div>
